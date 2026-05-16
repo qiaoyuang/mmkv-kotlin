@@ -11,7 +11,7 @@ on:
 jobs:
 
   build-mmkv-kotlin:
-    runs-on: macos-15-intel
+    runs-on: macos-latest
     timeout-minutes: 60
 
     steps:
@@ -51,15 +51,15 @@ jobs:
           path: |
             ~/.android/avd/*
             ~/.android/adb*
-          key: avd-36
+          key: avd-37
 
       - name: Create AVD and Generate Snapshot for Caching
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 36
+          api-level: 37
           target: google_apis
-          arch: x86_64
+          arch: arm64-v8a
           profile: pixel_6
           emulator-build: 15368433
           force-avd-creation: false
@@ -70,9 +70,9 @@ jobs:
       - name: Run Android 16 Instrumented Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 36
+          api-level: 37
           target: google_apis
-          arch: x86_64
+          arch: arm64-v8a
           profile: pixel_6
           emulator-build: 15368433
           force-avd-creation: false
