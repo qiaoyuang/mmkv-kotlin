@@ -13,7 +13,7 @@ kotlin {
     jvmToolchain(21)
     androidLibrary {
         namespace = "com.ctrip.flight.mmkv"
-        compileSdk = 37
+        compileSdk = 36
         minSdk = 23
     }
     iosArm64()
