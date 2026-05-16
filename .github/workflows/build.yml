@@ -42,7 +42,7 @@ jobs:
         run: pod repo update --verbose && ./gradlew :mmkv-kotlin:assemble
         
       - name: Run Native Tests
-        run: ./gradlew :mmkv-kotlin:cleanMacosX64Test && ./gradlew :mmkv-kotlin:macosX64Test --stacktrace
+        run: ./gradlew :mmkv-kotlin:cleanMacosArm64Test && ./gradlew :mmkv-kotlin:macosArm64Test --stacktrace
 
       - name: AVD Cache
         uses: actions/cache@v4
