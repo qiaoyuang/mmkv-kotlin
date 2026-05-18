@@ -11,10 +11,13 @@ group = "com.ctrip.flight.mmkv"
 
 kotlin {
     jvmToolchain(21)
-    androidLibrary {
+    android {
         namespace = "com.ctrip.flight.mmkv"
         compileSdk = 36
         minSdk = 23
+        withDeviceTest {
+            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
     }
     iosArm64()
     iosSimulatorArm64()
