@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.cocoapods)
     alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.vanniktech.maven.publish)
 }
 
@@ -13,11 +12,8 @@ kotlin {
     jvmToolchain(21)
     android {
         namespace = "com.ctrip.flight.mmkv"
-        compileSdk = 36
+        compileSdk = 37
         minSdk = 23
-        withDeviceTest {
-            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        }
     }
     iosArm64()
     iosSimulatorArm64()
@@ -46,18 +42,8 @@ kotlin {
         all {
             languageSettings.optIn("kotlin.RequiresOptIn")
         }
-        commonTest.dependencies {
-            implementation(kotlin("test"))
-        }
         androidMain.dependencies {
             api(libs.mmkv)
-        }
-        androidInstrumentedTest.dependencies {
-            implementation(kotlin("test-junit"))
-            implementation(libs.junit)
-            implementation(libs.androidx.test.core)
-            implementation(libs.androidx.test.runner)
-            implementation(libs.androidx.test.rules)
         }
     }
 }

@@ -1,5 +1,6 @@
 rootProject.name = "mmkv-kotlin"
 include(":mmkv-kotlin")
+include(":mmkv-kotlin-test")
 
 pluginManagement {
     repositories {

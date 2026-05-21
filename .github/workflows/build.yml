@@ -42,7 +42,7 @@ jobs:
         run: pod repo update --verbose && ./gradlew :mmkv-kotlin:iosArm64Binaries :mmkv-kotlin:iosSimulatorArm64Binaries :mmkv-kotlin:macosArm64Binaries
 
       - name: Run Native Tests
-        run: ./gradlew :mmkv-kotlin:cleanMacosArm64Test && ./gradlew :mmkv-kotlin:macosArm64Test --stacktrace
+        run: ./gradlew :mmkv-kotlin-test:cleanMacosArm64Test && ./gradlew :mmkv-kotlin-test:macosArm64Test --stacktrace
 
   build-android:
     runs-on: ubuntu-latest
@@ -115,11 +115,11 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          script: ./gradlew :mmkv-kotlin:connectedAndroidDeviceTest --stacktrace
+          script: ./gradlew :mmkv-kotlin-test:connectedAndroidDeviceTest --stacktrace
 
       - name: Upload Reports
         uses: actions/upload-artifact@v4
         with:
           name: Test-Reports
-          path: mmkv-kotlin/build/reports
+          path: mmkv-kotlin-test/build/reports
         if: failure()
